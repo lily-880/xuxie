@@ -1,0 +1,87 @@
+{
+  "description": "Single Gaokao-style English continuation-writing item. Field names are frozen.",
+  "type": "object",
+  "required": [
+    "id",
+    "source",
+    "year",
+    "paper",
+    "theme",
+    "passage",
+    "opening1",
+    "opening2",
+    "word_limit_note",
+    "reference_continuation"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^xuxie_eval_\\d{3}$",
+      "description": "Stable eval ID, e.g. xuxie_eval_001"
+    },
+    "source": {
+      "type": "string",
+      "enum": [
+        "gaokao",
+        "joint",
+        "mock"
+      ],
+      "description": "Official Gaokao / multi-province joint exam / high-quality mock"
+    },
+    "year": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "paper": {
+      "type": "string",
+      "description": "Human-readable paper label, e.g. Zhejiang June 2018"
+    },
+    "theme": {
+      "type": "string",
+      "description": "Short theme tag: family | animal | danger | kindness | growth | community"
+    },
+    "passage": {
+      "type": "string",
+      "description": "English stem story; target band about 270-370 words"
+    },
+    "opening1": {
+      "type": "string"
+    },
+    "opening2": {
+      "type": "string"
+    },
+    "min_continuation_words": {
+      "type": "integer",
+      "default": 100
+    },
+    "max_continuation_words": {
+      "type": "integer",
+      "default": 220
+    },
+    "target_continuation_words": {
+      "type": "integer",
+      "default": 150
+    },
+    "word_limit_note": {
+      "type": "string",
+      "description": "Official wording, usually 'about 150 words'"
+    },
+    "reference_continuation": {
+      "type": "string",
+      "description": "Required human/reference essay (two paragraphs with openings); never train on this"
+    }
+  },
+  "length_policy": {
+    "passage_words": [
+      270,
+      370
+    ],
+    "continuation_body_words_excl_openings": [
+      100,
+      220
+    ],
+    "note": "Outliers outside these bands are dropped from the frozen eval set."
+  }
+}
