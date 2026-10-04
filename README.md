@@ -20,7 +20,7 @@
 
 ## 权重
 
-推理用的 bf16 副本在 [Release v1.0.0](https://github.com/lily-880/xuxie/releases/tag/v1.0.0)，两段文件，合计约 2.6GB。GitHub 单文件上限是 2GB，所以拆开了。下载并拼回 nanochat 能直接加载的 checkpoint：
+正式权重是 DPO v10 step 50 的 bf16 推理副本，约 2.6GB，放在 `weights/parts/`。GitHub 不允许单个超过 100MB 的文件，所以拆成了 90MB 一段。拼回 nanochat 能直接加载的 checkpoint：
 
 ```bash
 python fetch_weights.py
