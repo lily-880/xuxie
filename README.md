@@ -1,8 +1,12 @@
 # 读后续写
 
-在自己预训练的 GPT-2 量级模型上，做高考英语读后续写。底座是 nanochat d24（CORE 约 0.262）。后训练用 SFT 和两轮 on-policy DPO，评测用留出的 80 道题，两段开头写死、不让模型改。
+在自己预训练的 GPT-2 量级模型上，做高考英语读后续写。底座是单卡从零训的 nanochat d24，CORE **0.262**，过了 GPT-2 的 0.2565。后训练用 SFT 和两轮 on-policy DPO，评测用留出的 80 道题，两段开头写死、不让模型改。
 
 正式模型是 **DPO v10 step 50**。模拟题干净率 **70.8%**，词数 **100%** 合格，重讲原文从 SFT 的 10% 降到 **0.3%**。完整数字和后来没超过它的实验在 [reports/summary.md](reports/summary.md)。
+
+## 预训练
+
+底座不是下载的权重。在一张 48GB 的 RTX PRO 5000 上从零训练，5568 步，约 55 小时。验证 bpb 0.714，CORE 0.2620，和 nanochat 官方 Run 6 的均值 0.2626 持平。单卡放不下官方 batch，所以 batch 用 8；这张卡没有 FA3，注意力改成全长窗口。过程在 [reports/pretrain.md](reports/pretrain.md)。
 
 ## 做成了什么
 
