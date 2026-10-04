@@ -1,0 +1,26 @@
+{
+ "step": 50,
+ "start": "dpo:d24_xuxie_dpo_v8_lr3e-6:50",
+ "beta": 0.1,
+ "alpha": 0.2,
+ "lr": 3e-06,
+ "pairs": "/home/classmate/.cache/nanochat/task_data/xuxie/dpo_r3_pairs.jsonl",
+ "val": {
+  "acc": 0.6046511627906976,
+  "margin": 0.7337813266488009,
+  "chosen_delta": -3.410797119140625,
+  "rejected_delta": -4.144578445789426
+ },
+ "model_config": {
+  "sequence_len": 2048,
+  "vocab_size": 32768,
+  "n_layer": 24,
+  "n_head": 12,
+  "n_kv_head": 12,
+  "n_embd": 1536,
+  "window_pattern": "L",
+  "softcap": 15.0
+ },
+ "dtype": "bfloat16",
+ "note": "Inference copy of DPO v10 step 50. Matrices stored in bf16."
+}
