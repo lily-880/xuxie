@@ -6,7 +6,7 @@
 
 ## 预训练
 
-底座不是下载的权重。在一张 48GB 的 RTX PRO 5000 上从零训练，5568 步，约 55 小时。验证 bpb 0.714，CORE 0.2620，和 nanochat 官方 Run 6 的均值 0.2626 持平。单卡放不下官方 batch，所以 batch 用 8；这张卡没有 FA3，注意力改成全长窗口。过程在 [reports/pretrain.md](reports/pretrain.md)。
+底座不是下载的权重。在一张 48GB 的 RTX PRO 5000 上从零训练，5568 步，约 55 小时。模型 24 层、隐层 1536、12 头，总参数 **13.84 亿**。验证 bpb 0.714，CORE 0.2620，和 nanochat 官方 Run 6 的均值 0.2626 持平。单卡放不下官方 batch，所以 batch 用 8；这张卡没有 FA3，注意力改成全长窗口。参数量拆分、学习率、验证曲线和 CORE 的 22 项分数在 [reports/pretrain.md](reports/pretrain.md)。
 
 ## 做成了什么
 
@@ -66,6 +66,7 @@ cd /path/to/nanochat
 | `nanochat_changes/` | 放回 nanochat 的训练脚本和 `Engine.generate` 补丁 |
 | `fetch_weights.py` | 下载正式权重 |
 | `reports/summary.md` | 结项报告 |
+| `reports/pretrain.md` | 预训练参数、训练配方、CORE 分项 |
 
 ## 这个规模的上限
 
